@@ -24,7 +24,7 @@ function test {
 function server {
   cabal v2-run nix-package-versions-exe -- \
     server \
-    --port 8080 \
+    --port 8280 \
     --db-root database
 }
 
@@ -37,7 +37,8 @@ function update-database {
 
   cabal v2-run nix-package-versions-exe -- \
     update \
-    --from  2024-01-01 \
+    --from 2017-01-01 \
+    --until 2025-01-01 \
     --github-user  $GITHUB_USER \
     --github-token $GITHUB_TOKEN \
     --db-root database \

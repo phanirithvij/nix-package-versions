@@ -9,7 +9,7 @@ module App.Update
   ) where
 
 import Control.Concurrent.MVar
-import Control.Concurrent (getNumCapabilities, threadDelay)
+import Control.Concurrent (threadDelay)
 import Control.Monad (void, when, forM_)
 import Control.Monad.STM (atomically)
 import Control.Concurrent.STM.TVar
@@ -161,7 +161,7 @@ updateDatabase database freq user targetPeriod =
           within (Period s e) (Period s' e',_,state) =
             s <= s' && e' <= e && isFinal state
 
-  capabilities <- getNumCapabilities
+  let capabilities = 3 -- My ram is not enough for 8 nix-env
   logInfo logger $ "concurrency: " <> pretty capabilities
   parallelWriter logger database capabilities $ \save -> do
     results <- newMVar mempty

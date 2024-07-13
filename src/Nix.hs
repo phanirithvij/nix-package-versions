@@ -80,8 +80,6 @@ data Channel
     | Nixpkgs_19_09_darwin
     | Nixpkgs_19_03_darwin
     | Nixpkgs_18_09_darwin
-    | Nixpkgs_18_03_darwin
-    | Nixpkgs_17_09_darwin
     | Nixos_unstable
     | Nixos_24_05
     | Nixos_23_11
@@ -95,9 +93,6 @@ data Channel
     | Nixos_19_09
     | Nixos_19_03
     | Nixos_18_09
-    | Nixos_18_03
-    | Nixos_17_09
-    | Nixos_17_03
     deriving (Show, Read, Eq, Bounded, Enum, Ord, Generic)
     deriving anyclass (Hashable, FromJSON, FromJSONKey, ToJSON, ToJSONKey)
 
@@ -120,8 +115,6 @@ channelBranch = Git.Branch . \case
     Nixpkgs_19_09_darwin -> "nixpkgs-19.09-darwin"
     Nixpkgs_19_03_darwin -> "nixpkgs-19.03-darwin"
     Nixpkgs_18_09_darwin -> "nixpkgs-18.09-darwin"
-    Nixpkgs_18_03_darwin -> "nixpkgs-18.03-darwin"
-    Nixpkgs_17_09_darwin -> "nixpkgs-17.09-darwin"
     Nixos_unstable       -> "nixos-unstable"
     Nixos_24_05          -> "nixos-24.05"
     Nixos_23_11          -> "nixos-23.11"
@@ -135,9 +128,6 @@ channelBranch = Git.Branch . \case
     Nixos_19_09          -> "nixos-19.09"
     Nixos_19_03          -> "nixos-19.03"
     Nixos_18_09          -> "nixos-18.09"
-    Nixos_18_03          -> "nixos-18.03"
-    Nixos_17_09          -> "nixos-17.09"
-    Nixos_17_03          -> "nixos-17.03"
 
 -- | The contents of a json file with package information
 data Revision = Revision
